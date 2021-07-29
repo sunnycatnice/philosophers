@@ -7,6 +7,9 @@
 *.obj
 *.elf
 
+# Program
+philo
+
 # Linker output
 *.ilk
 *.map
