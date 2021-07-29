@@ -33,6 +33,13 @@
 *.out
 *.app
 *.i*86
+
+# my personal gitignore - dmangola
+*.DS_Store
+*.o
+*.a
+*.swp
+*.code-workspace
 *.x86_64
 *.hex
 
