@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:52:17 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/29 15:45:58 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/29 15:49:42 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void		ft_init(t_philo *philo);
 void		ft_print_start_msg(void);
 void		ft_checker(t_philo *philo);
 int			ft_parser_checker(int ac, char **av, t_philo *philo);
+int			ft_philo(t_philo *philo);
 
 #endif

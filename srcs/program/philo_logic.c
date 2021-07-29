@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:25:08 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/29 15:46:30 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/29 15:50:21 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int     ft_philo(t_philo *philo)
     ph = 0;
     while (ph <= philo->n_philo)
     {
-        ft_create_threads(philo); 
+        //ft_create_threads(philo); 
         ph++;
     }
+    return (0);
 }

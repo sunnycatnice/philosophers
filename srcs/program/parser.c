@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:43:04 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/29 15:46:09 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/29 15:49:42 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ int	ft_parser_checker(int ac, char **av, t_philo *philo)
 	if (ac == 6)
 		philo->n_musteat = ft_atoi(av[5]);
 	ft_checker(philo);
-	//ft_philo(philo);
+	ft_philo(philo);
 	return (0);
 }
