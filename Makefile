@@ -35,6 +35,7 @@ PHILO_FILES	=	main.c \
 				parser.c \
 				checkstring.c \
 				philo_logic.c \
+				mutex.c \
 				#threads.c \
 
 SRCS_MINILIBFT = $(addprefix $(MINILIBFT_PATH)/, $(MINILIBFT_FILES))

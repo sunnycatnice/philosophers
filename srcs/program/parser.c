@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:43:04 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/29 15:49:42 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/29 16:40:11 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	ft_printerr(int err)
 		ft_putstr_fd(ERR_6, 2);
 	else if (err == 7)
 		ft_putstr_fd(ERR_7, 2);
+	else if (err == 8)
+		ft_putstr_fd(ERR_8, 2);
 	ft_putstr_fd("****************************************\033[0m", 2);
 	exit (1);
 }
@@ -60,6 +62,7 @@ void	ft_init(t_philo *philo)
 	philo->i = 0;
 	philo->tid = 0;
 	philo->lock = 0;
+	philo->shared = 0;
 }
 
 void	ft_checker(t_philo *philo)
@@ -88,5 +91,7 @@ int	ft_parser_checker(int ac, char **av, t_philo *philo)
 		philo->n_musteat = ft_atoi(av[5]);
 	ft_checker(philo);
 	ft_philo(philo);
+	ft_create_mutex(philo);
+	//ft_threads(philo);
 	return (0);
 }
