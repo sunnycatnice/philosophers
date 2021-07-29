@@ -3,31 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 16:36:29 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/27 16:36:35 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/07/29 15:23:20 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	ft_atoi(const char *str)
+int	is_neg(char c)
 {
-	int	i;
-	int	n;
+	if (c == '-')
+		return (-1);
+	return (1);
+}
 
+int	is_space(char c)
+{
+	if (c == '\t' || c == '\n' || c == '\r' || \
+		c == '\v' || c == '\f' || c == ' ')
+		return (1);
+	return (0);
+}
+
+long int	ft_atoi(const char *str)
+{
+	int			i;
+	int			neg;
+	long long	result;
+
+	result = 0;
 	i = 0;
-	n = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
+	while (is_space(str[i]))
 		i++;
-	while (str[i])
+	neg = is_neg(str[i]);
+	if (neg == -1)
+		i++;
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		n = n * 10 + (str[i] - 48);
-		if (str[i] <= '0' || str[i] >= '9')
-			return (0);
+		if (!ft_isdigit(str[i]))
+			return (-1);
+		result = result * 10 + (str[i] - '0');
 		i++;
+		if (result > 2147483648)
+			break ;
 	}
-	return (n);
+	return (neg * (long int)result);
 }

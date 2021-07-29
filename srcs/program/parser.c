@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:43:04 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/28 16:43:18 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/07/29 15:46:09 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
-
-void	ft_init(t_philo *philo)
-{
-	ft_print_start_msg();
-	philo->n_philo = 0;
-	philo->todie = 0;
-	philo->toeat = 0;
-	philo->tosleep = 0;
-	philo->n_musteat = 0;
-	philo->i = 0;
-}
 
 void	ft_print_start_msg(void)
 {
@@ -33,33 +22,63 @@ void	ft_print_start_msg(void)
 	ft_putstr_fd("  ██╗██╔╝   ██║     ██║  ██║██║███████╗╚██████╔╝\n", 1);
 	ft_putstr_fd("  ╚═╝╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ \n", 1);
 	ft_putstr_fd("\033[0;32m", 1);
-	ft_putstr_fd("                   by dmangola                  \n\n", 1);
+	ft_putstr_fd("               by dmangola && rpaderi             \n\n", 1);
 	ft_putstr_fd("\033[0m", 1);
 }
 
-void	ft_print_err_args()
+void	ft_printerr(int err)
 {
-	ft_putstr_fd("\033[0;31m***************************************", 2);
-	ft_putstr_fd("**********\n", 2);
-	ft_putstr_fd("Error: wrong number of arguments. Must be 5 or 6.\n", 2);
-	ft_putstr_fd("*************************************************", 2);
-	ft_putstr_fd("\033[0m", 2);
+	ft_putstr_fd("\033[0;31m****************************************\n", 2);
+	if (err == 0)
+		ft_putstr_fd(ERR_0, 2);
+	else if (err == 1)
+		ft_putstr_fd(ERR_1, 2);
+	else if (err == 2)
+		ft_putstr_fd(ERR_2, 2);
+	else if (err == 3)
+		ft_putstr_fd(ERR_3, 2);
+	else if (err == 4)
+		ft_putstr_fd(ERR_4, 2);
+	else if (err == 5)
+		ft_putstr_fd(ERR_5, 2);
+	else if (err == 6)
+		ft_putstr_fd(ERR_6, 2);
+	else if (err == 7)
+		ft_putstr_fd(ERR_7, 2);
+	ft_putstr_fd("****************************************\033[0m", 2);
+	exit (1);
+}
+
+void	ft_init(t_philo *philo)
+{
+	ft_print_start_msg();
+	philo->n_philo = 0;
+	philo->todie = 0;
+	philo->toeat = 0;
+	philo->tosleep = 0;
+	philo->n_musteat = -1;
+	philo->i = 0;
+	philo->tid = 0;
+	philo->lock = 0;
 }
 
 void	ft_checker(t_philo *philo)
 {
-	if (!philo->n_philo || !philo->todie || !philo->toeat || !philo->tosleep \
-		|| !philo->n_musteat)
-	{
-		ft_putstr_fd("\033[0;31m****************************************\n", 2);
-		ft_putstr_fd("Error: found a char or a sign in argv(s)\n", 2);
-		ft_putstr_fd("****************************************\033[0m", 2);
-		exit (1);
-	}
+	if (philo->n_philo <= 1)
+		ft_printerr(7);
+	if (philo->todie < 70)
+		ft_printerr(4);
+	if (philo->toeat < 70)
+		ft_printerr(5);
+	if (philo->tosleep < 70)
+		ft_printerr(6);
+	if (philo->n_philo > 200)
+		ft_printerr(3);
 }
 
 int	ft_parser_checker(int ac, char **av, t_philo *philo)
 {
+	check_string(ac, av);
 	philo->n_philo = ft_atoi(av[1]);
 	philo->n_forchette = philo->n_philo;
 	philo->todie = ft_atoi(av[2]);
@@ -68,5 +87,6 @@ int	ft_parser_checker(int ac, char **av, t_philo *philo)
 	if (ac == 6)
 		philo->n_musteat = ft_atoi(av[5]);
 	ft_checker(philo);
+	//ft_philo(philo);
 	return (0);
 }
