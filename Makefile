@@ -7,7 +7,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 
 DIR_SRCS = srcs
-DIR_MINILIBFT= minilibft
+DIR_MINILIBFT= minilib
 DIR_PHILO = program
 DIR_OBJS = objs
 CURRENT_FOLDER = $(shell pwd)
