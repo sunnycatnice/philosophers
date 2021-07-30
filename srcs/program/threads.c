@@ -6,11 +6,12 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:05:55 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/29 17:29:14 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/30 19:01:46 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
+#include "sys/time.h"
 
 /*
 **	trylock:
@@ -21,56 +22,69 @@
 **	return:
 **	0		in case of success, thus obtaining mutex propriety.
 **	EBUSY	if mutex is opccuppied.
-*/
-// void	*trylock(t_philo *philo)
-// {
-// 	unsigned long	i;
 
-// 	pthread_mutex_lock(&g_lock);
-// 	i = 0;
-// }
-
-// void	ft_create_threads(t_philo *philo)
-// {
-// 	int	i;
-// 	int	error;
-
-// 	i = 0;
-// 	if (pthread_mutex_init(&lock, NULL) != 0)
-// 	{
-// 		ft_putstr_fd("Mutex init failed.\n", 1);
-// 	}
-// }
-
-static void	*thread_main(void *arg, t_philo *philo)
+void	*trylock(t_philo *data)
 {
-	int	i;
-	int	k;
+	unsigned long	i;
 
+	pthread_mutex_lock(&g_lock);
 	i = 0;
-	while (i < philo->n_forchette)
-	{
-		k = philo->shared;
-		k++;
-		philo->shared = k;
-	}
-	printf("Hello from thread number: %d (shared = %d)\n", \
-		(int)arg, philo->shared);
-	pthread_exit(arg);
 }
 
-void	ft_threads(t_philo *philo)
+void	ft_create_threads(t_data *data)
 {
-	int			t;
-	int			status;
-	pthread_t	children[philo->n_forchette];
+	int	i;
+	int	error;
 
-	t = 0;
-	while (t < philo->n_forchette)
+	i = 0;
+	if (pthread_mutex_init(&lock, NULL) != 0)
 	{
-		// Variable lenght array forbidden for norminette porcodddio.
-		// Non puoi passare un indirizzo di memoria in array, questa è nuova pure per me. 
-		pthread_create(&children[t], NULL, thread_main, (void *)t);
-		t++;
+		ft_putstr_fd("Mutex init failed.\n", 1);
 	}
+}
+
+static void *print_and_pexit(t_data *data, void *p)
+{
+	printf("Valore ricevuto come argomento nell'inizializzazione: %i\n", * (int*)p);
+	return ((int)pthread_exit(&data->i0));
+}
+*/
+
+void	*ft_musteat(t_data *data)
+{
+	data->n_musteat--;
+	printf("\nMUST EAT %d\n", data->n_musteat);
+	return ((void *)0);
+}
+
+void	*ft_sorter(t_data *data)
+{
+	data->i++;
+	static int i2= 1;
+	printf("SORTER %d\n", i2++);
+	return ((void *)0);
+}
+
+int	ft_start_threads(t_data *data)
+{
+	int			i;
+	pthread_t	tid;
+
+	if(data->n_musteat > 0)
+	{
+		if (pthread_create(&tid, NULL, (void *)ft_musteat, (void*)data) != 0)
+			return (1);
+		pthread_detach(tid);
+	}
+	data->start = get_time();
+	i = 0;
+	while (i < data->n_philo)
+	{
+		if (pthread_create(&tid, NULL, (void *)ft_sorter, (void*)data) != 0)
+			return (1);
+		pthread_detach(tid);
+		usleep(100);
+		i++;
+	}
+	return (0);
 }

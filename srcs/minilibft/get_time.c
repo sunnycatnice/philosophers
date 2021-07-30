@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/26 15:33:58 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/30 15:20:38 by crossi           ###   ########.fr       */
+/*   Created: 2021/07/30 16:50:02 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/07/30 16:50:37 by crossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	main(int ac, char **av)
+uint64_t	get_time(void)
 {
-	t_data	philo;
+	static struct timeval	tv;
 
-	ft_init(&philo);
-	if (ac == 5 || ac == 6)
-		ft_parser_checker(ac, av, &philo);
-	else
-		ft_printerr(0);
-	return (0);
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
 }

@@ -6,13 +6,13 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 16:30:19 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/29 17:25:47 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/30 18:58:15 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-void	ft_create_mutex(t_philo *philo)
+void	ft_create_mutex(t_data *philo)
 {
 	int				i;
 	pthread_mutex_t	*forks;
@@ -28,5 +28,5 @@ void	ft_create_mutex(t_philo *philo)
 		}
 		i++;
 	}
-	printf("Correctly created %d forks (mutex)", i);
+	printf("Correctly created %d forks (mutex)\n", i);
 }

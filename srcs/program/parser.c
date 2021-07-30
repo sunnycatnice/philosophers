@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:43:04 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/29 17:34:04 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/30 18:35:39 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	ft_printerr(int err)
 		ft_putstr_fd(ERR_7, 2);
 	else if (err == 8)
 		ft_putstr_fd(ERR_8, 2);
-	ft_putstr_fd("****************************************\033[0m", 2);
+	ft_putstr_fd("****************************************\033[0m\n", 2);
 	exit (1);
 }
 
-void	ft_init(t_philo *philo)
+void	ft_init(t_data *philo)
 {
 	ft_print_start_msg();
 	philo->n_philo = 0;
@@ -65,7 +65,7 @@ void	ft_init(t_philo *philo)
 	philo->shared = 0;
 }
 
-void	ft_checker(t_philo *philo)
+void	ft_checker(t_data *philo)
 {
 	if (philo->n_philo <= 1)
 		ft_printerr(7);
@@ -79,7 +79,7 @@ void	ft_checker(t_philo *philo)
 		ft_printerr(3);
 }
 
-int	ft_parser_checker(int ac, char **av, t_philo *philo)
+int	ft_parser_checker(int ac, char **av, t_data *philo)
 {
 	check_string(ac, av);
 	philo->n_philo = ft_atoi(av[1]);
@@ -90,7 +90,9 @@ int	ft_parser_checker(int ac, char **av, t_philo *philo)
 	if (ac == 6)
 		philo->n_musteat = ft_atoi(av[5]);
 	ft_checker(philo);
-	ft_philo(philo);
+	//ft_philo(philo);
 	ft_create_mutex(philo);
+	ft_start_threads(philo);
+
 	return (0);
 }

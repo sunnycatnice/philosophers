@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   philo_logic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: crossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:25:08 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/29 17:26:24 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/30 15:20:38 by crossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	ft_philo(t_philo *philo)
+int	ft_philo(t_data *philo)
 {
 	int	ph;
 
