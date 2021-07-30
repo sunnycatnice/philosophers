@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:05:55 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/30 19:01:46 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/30 20:18:28 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,12 @@
 **	return:
 **	0		in case of success, thus obtaining mutex propriety.
 **	EBUSY	if mutex is opccuppied.
-
-void	*trylock(t_philo *data)
-{
-	unsigned long	i;
-
-	pthread_mutex_lock(&g_lock);
-	i = 0;
-}
-
-void	ft_create_threads(t_data *data)
-{
-	int	i;
-	int	error;
-
-	i = 0;
-	if (pthread_mutex_init(&lock, NULL) != 0)
-	{
-		ft_putstr_fd("Mutex init failed.\n", 1);
-	}
-}
-
-static void *print_and_pexit(t_data *data, void *p)
-{
-	printf("Valore ricevuto come argomento nell'inizializzazione: %i\n", * (int*)p);
-	return ((int)pthread_exit(&data->i0));
-}
 */
+
+void	do_ms(int ms)
+{		
+	usleep(ms*1000);
+}
 
 void	*ft_musteat(t_data *data)
 {
@@ -65,7 +44,7 @@ void	*ft_sorter(t_data *data)
 	return ((void *)0);
 }
 
-int	ft_start_threads(t_data *data)
+int	ft_start_philo(t_data *data, t_philo *philo)
 {
 	int			i;
 	pthread_t	tid;
@@ -74,7 +53,8 @@ int	ft_start_threads(t_data *data)
 	{
 		if (pthread_create(&tid, NULL, (void *)ft_musteat, (void*)data) != 0)
 			return (1);
-		pthread_detach(tid);
+		//pthread_detach(tid);
+		ft_philo(data, &tid)
 	}
 	data->start = get_time();
 	i = 0;
@@ -82,8 +62,9 @@ int	ft_start_threads(t_data *data)
 	{
 		if (pthread_create(&tid, NULL, (void *)ft_sorter, (void*)data) != 0)
 			return (1);
-		pthread_detach(tid);
-		usleep(100);
+		//pthread_detach(tid);
+		do_ms(2000);
+		ft_philo(data, &tid);
 		i++;
 	}
 	return (0);

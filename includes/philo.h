@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:52:17 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/30 18:35:21 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/30 20:16:22 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 
 # define EATING 	0
 # define SLEEPING	1
-# define TAKEN_FORK	2
+# define TAKIN_FORK	2
 # define THINKING	3
 # define DIED	 	4
 # define DONE	 	5
@@ -63,7 +63,7 @@ typedef struct		s_philo
 	uint64_t		last_eat;
 	int				lfork;
 	int				rfork;
-	struct s_state	*state;
+	char			**state;
 	int				eat_count;
 	sem_t			*mutex;
 	sem_t			*eat_count_m;
@@ -114,6 +114,7 @@ void		ft_bzero(void *s, size_t n);
 size_t		ft_strcpy(char *dst, const char *src);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 uint64_t	get_time(void);
+
 /*
 ** Philo functions
 */
@@ -131,6 +132,7 @@ void		ft_create_mutex(t_data *philo);
 
 void		*ft_sorter(t_data *data);
 void		*ft_musteat(t_data *data);
-int			ft_start_threads(t_data *data);
+int			ft_start_philo(t_data *data, t_philo *philo);
+int			ft_philo(t_data *data, pthread_t tid);
 
 #endif
