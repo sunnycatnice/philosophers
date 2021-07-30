@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:43:04 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/29 16:40:11 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/29 17:34:04 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ void	ft_checker(t_philo *philo)
 {
 	if (philo->n_philo <= 1)
 		ft_printerr(7);
-	if (philo->todie < 70)
+	if (philo->todie <= 0)
 		ft_printerr(4);
-	if (philo->toeat < 70)
+	if (philo->toeat <= 0)
 		ft_printerr(5);
-	if (philo->tosleep < 70)
+	if (philo->tosleep <= 0)
 		ft_printerr(6);
 	if (philo->n_philo > 200)
 		ft_printerr(3);
@@ -92,6 +92,5 @@ int	ft_parser_checker(int ac, char **av, t_philo *philo)
 	ft_checker(philo);
 	ft_philo(philo);
 	ft_create_mutex(philo);
-	//ft_threads(philo);
 	return (0);
 }

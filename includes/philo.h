@@ -6,44 +6,52 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:52:17 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/29 16:39:56 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/29 17:35:40 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
 /*
 ** Libraries
 */
+
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <pthread.h>
 # include <time.h>
+
 /*
 ** Error Codes
 */
+
 # define ERR_0 "Error: wrong number of arguments. Must be 5 or 6.\n"
 # define ERR_1 "Error: found a char in arguments\n"
 # define ERR_2 "Error: insert a valid number.(s)\n"
 # define ERR_3 "Error: Too much Philosopher bruh!\n"
-# define ERR_4 "Error: Too much low ms for die!\n"
-# define ERR_5 "Error: Too much low ms for eat!\n" 
-# define ERR_6 "Error: Too much low ms for sleeping!\n"
+# define ERR_4 "Error: Too few ms for die!\n"
+# define ERR_5 "Error: Too few ms for eat!\n" 
+# define ERR_6 "Error: Too few ms for sleeping!\n"
 # define ERR_7 "Error: Too few Philosopher bruh\n"
 # define ERR_8 "Error: Couldn't create mutex\n"
+
 /*
 ** Flags for threads
 */
+
 # define EATING 	0
 # define SLEEPING	1
 # define TAKEN_FORK	2
 # define THINKING	3
 # define DIED	 	4
 # define DONE	 	5
+
 /*
 ** Structs
 */
+
 typedef struct s_philo
 {
 	int				n_philo;
@@ -82,6 +90,7 @@ int			ft_isdigit(char c);
 void		ft_bzero(void *s, size_t n);
 size_t		ft_strcpy(char *dst, const char *src);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
 /*
 ** Philo functions
 */

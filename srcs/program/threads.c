@@ -6,7 +6,7 @@
 /*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:05:55 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/29 16:16:13 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/07/29 17:29:14 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@
 
 static void	*thread_main(void *arg, t_philo *philo)
 {
-	int i;
-	int k;
+	int	i;
+	int	k;
 
 	i = 0;
 	while (i < philo->n_forchette)
@@ -54,20 +54,23 @@ static void	*thread_main(void *arg, t_philo *philo)
 		k++;
 		philo->shared = k;
 	}
-	printf("Hello from thread number: %d (shared = %d)\n", (int)arg, philo->shared);
+	printf("Hello from thread number: %d (shared = %d)\n", \
+		(int)arg, philo->shared);
 	pthread_exit(arg);
 }
 
 void	ft_threads(t_philo *philo)
 {
-	int	t;
-	int status;
-	pthread_t children[philo->n_forchette];
+	int			t;
+	int			status;
+	pthread_t	children[philo->n_forchette];
 
 	t = 0;
 	while (t < philo->n_forchette)
 	{
-		pthread_create(&children[t], NULL, thread_main, (void*)t);
+		// Variable lenght array forbidden for norminette porcodddio.
+		// Non puoi passare un indirizzo di memoria in array, questa è nuova pure per me. 
+		pthread_create(&children[t], NULL, thread_main, (void *)t);
 		t++;
 	}
 }
