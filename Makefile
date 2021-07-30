@@ -9,7 +9,7 @@ FLAGS = -Wall -Wextra -Werror -g
 DIR_SRCS = srcs
 DIR_MINILIBFT= minilibft
 DIR_PHILO = program
-DIR_OBJS = objs
+DIR_OBJS = .objs
 CURRENT_FOLDER = $(shell pwd)
 OBJS_PATH = $(addprefix $(CURRENT_FOLDER)/, $(DIR_OBJS))
 
