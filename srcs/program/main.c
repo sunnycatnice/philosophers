@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	{
 		ft_parser_checker(ac, av, &philo);
 		ft_create_mutex(&philo);
-		ft_start_philo(&philo, &data);
+		ft_start_philo(&data);
 	}
 	else
 		ft_printerr(0);

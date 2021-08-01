@@ -18,6 +18,8 @@ int	ft_philo(t_data *data, pthread_t tid)
 
 	ph = 0;
 
+	tid = tid + 1;
+	tid = tid - 1;
 	if(data->n_musteat > 0)
 		printf("must_eat: ˆ%d", data->n_musteat);
 	return (0);

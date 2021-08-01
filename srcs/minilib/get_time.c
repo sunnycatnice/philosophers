@@ -12,6 +12,11 @@
 
 #include "../../includes/philo.h"
 
+void	sleep_ms(int ms)
+{		
+	usleep(ms*1000);
+}
+
 uint64_t	get_time(void)
 {
 	static struct timeval	tv;

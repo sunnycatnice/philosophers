@@ -28,7 +28,8 @@ void	ft_print_start_msg(void)
 
 void	ft_printerr(int err)
 {
-	ft_putstr_fd("\033[0;31m****************************************\n", 2);
+	ft_putstr_fd("\033[0;31m*************************************************\n",
+		2);
 	if (err == 0)
 		ft_putstr_fd(ERR_0, 2);
 	else if (err == 1)
@@ -47,7 +48,7 @@ void	ft_printerr(int err)
 		ft_putstr_fd(ERR_7, 2);
 	else if (err == 8)
 		ft_putstr_fd(ERR_8, 2);
-	ft_putstr_fd("****************************************\033[0m\n", 2);
+	ft_putstr_fd("*************************************************\033[0m\n", 2);
 	exit (1);
 }
 

@@ -13,30 +13,27 @@
 #include "../../includes/philo.h"
 #include "sys/time.h"
 
-/*
-**	trylock:
-**	1.	not blocking (for avoidind deadlocks)
-**	2.	it's the same of lock() but if the mutex is already in possess of another
-** 		thread (thus remaining locked), it returns immediatly the control with
-**		the resoult EBUSY.
-**	return:
-**	0		in case of success, thus obtaining mutex propriety.
-**	EBUSY	if mutex is opccuppied.
-*/
-
-void	do_ms(int ms)
-{		
-	usleep(ms*1000);
-}
-
 void	*ft_musteat(t_data *data)
 {
-	data->n_musteat--;
-	printf("\nMUST EAT %d\n", data->n_musteat);
+	t_data	*copy;
+	int		i;
+	int		tot;
+
+	copy = (t_data *)data;
+	tot = 0;
+	while (data->philos->eat_count < data->n_musteat)
+	{
+		i = 0;
+		while (i < data->n_philo)
+			pthread_mutex_lock(&data->philos[i++].eat_mutex);
+		tot++;
+	}
+	ft_print_msg();
+	pthread_mutex_unlock(data->dead_mutex);
 	return ((void *)0);
 }
 
-void	*ft_sorter(t_data *data)
+void	*ft_infinite_loop(t_data *data)
 {
 	data->i++;
 	static int i2= 1;
@@ -44,27 +41,26 @@ void	*ft_sorter(t_data *data)
 	return ((void *)0);
 }
 
-int	ft_start_philo(t_data *data, t_philo *philo)
+int	ft_start_philo(t_data *data)
 {
 	int			i;
 	pthread_t	tid;
 
+	data->start = get_time();
 	if(data->n_musteat > 0)
 	{
 		if (pthread_create(&tid, NULL, (void *)ft_musteat, (void*)data) != 0)
 			return (1);
-		//pthread_detach(tid);
-		ft_philo(data, &tid)
+		pthread_detach(tid);
 	}
-	data->start = get_time();
 	i = 0;
 	while (i < data->n_philo)
 	{
-		if (pthread_create(&tid, NULL, (void *)ft_sorter, (void*)data) != 0)
+		if (pthread_create(&tid, NULL, (void *)ft_infinite_loop, (void*)data) != 0)
 			return (1);
-		//pthread_detach(tid);
-		do_ms(2000);
-		ft_philo(data, &tid);
+		pthread_detach(tid);
+		//per evitare i deadlock fare uno usleep di 10ms
+		sleep_ms(2000);
 		i++;
 	}
 	return (0);
