@@ -31,13 +31,14 @@ MINILIBFT_FILES =	ft_putstr_fd.c \
 					ft_isdigit.c \
 					ft_atoi.c \
 					get_time.c \
+					ft_putnbr_fd.c \
 
 PHILO_FILES	=	main.c \
 				parser.c \
 				checkstring.c \
-				philo_logic.c \
 				mutex.c \
 				threads.c \
+				print_msgs.c \
 
 SRCS_MINILIBFT = $(addprefix $(MINILIBFT_PATH)/, $(MINILIBFT_FILES))
 SRCS_PHILO = $(addprefix $(PHILO_PATH)/, $(PHILO_FILES))

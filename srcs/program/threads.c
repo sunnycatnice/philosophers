@@ -21,14 +21,14 @@ void	*ft_musteat(t_data *data)
 
 	copy = (t_data *)data;
 	tot = 0;
-	while (data->philos->eat_count < data->n_musteat)
+	while (copy->philos->eat_count < copy->n_musteat)
 	{
 		i = 0;
-		while (i < data->n_philo)
-			pthread_mutex_lock(&data->philos[i++].eat_mutex);
+		while (i < copy->n_philo)
+			pthread_mutex_lock(&copy->philos[i++].eat_mutex);
 		tot++;
 	}
-	ft_print_msg();
+	ft_print_msg(data, MUSTEAT_MSG);
 	pthread_mutex_unlock(data->dead_mutex);
 	return ((void *)0);
 }
@@ -46,7 +46,7 @@ int	ft_start_philo(t_data *data)
 	int			i;
 	pthread_t	tid;
 
-	data->start = get_time();
+	data->start_time = get_time();
 	if(data->n_musteat > 0)
 	{
 		if (pthread_create(&tid, NULL, (void *)ft_musteat, (void*)data) != 0)

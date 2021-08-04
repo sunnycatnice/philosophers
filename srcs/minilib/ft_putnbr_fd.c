@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_logic.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 15:25:08 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/30 20:19:49 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/04 13:20:46 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/04 13:20:51 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	ft_philo(t_data *data, pthread_t tid)
+void	ft_putnbr_fd(uint64_t n, int fd)
 {
-	int	ph;
+	char	str[13];
+	int		length;
 
-	ph = 0;
-
-	tid = tid + 1;
-	tid = tid - 1;
-	if(data->n_musteat > 0)
-		printf("must_eat: ˆ%d", data->n_musteat);
-	return (0);
+	if (n == 0)
+		str[0] = '0';
+	length = 0;
+	while (n != 0)
+	{
+		str[length++] = '0' + (n % 10);
+		n = (n / 10);
+	}
+	if (length > 0)
+		length--;
+	while (length >= 0)
+		write(fd, &str[length--], 1);
 }

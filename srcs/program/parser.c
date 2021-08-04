@@ -22,7 +22,7 @@ void	ft_print_start_msg(void)
 	ft_putstr_fd("  ██╗██╔╝   ██║     ██║  ██║██║███████╗╚██████╔╝\n", 1);
 	ft_putstr_fd("  ╚═╝╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ \n", 1);
 	ft_putstr_fd("\033[0;32m", 1);
-	ft_putstr_fd("               by dmangola && rpaderi             \n\n", 1);
+	ft_putstr_fd("               by dmangola && rpaderi            \n\n", 1);
 	ft_putstr_fd("\033[0m", 1);
 }
 
@@ -62,8 +62,6 @@ void	ft_init(t_data *philo)
 	philo->n_musteat = -1;
 	philo->i = 0;
 	philo->tid = 0;
-	philo->lock = 0;
-	philo->shared = 0;
 }
 
 void	ft_checker(t_data *philo)

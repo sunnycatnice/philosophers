@@ -44,12 +44,12 @@
 ** Flags for threads
 */
 
-# define EATING 	0
-# define SLEEPING	1
-# define TAKIN_FORK	2
-# define THINKING	3
-# define DIED	 	4
-# define DONE	 	5
+# define FORK_MSG 		0
+# define EAT_MSG		1
+# define SLEEP_MSG		2
+# define THINKING_MSG	3
+# define DIED_MSG 		4
+# define MUSTEAT_MSG	5
 
 /*
 ** Structs
@@ -65,7 +65,7 @@ typedef struct		s_philo
 	int				rfork;
 	int				eat_count;
 	struct s_data	*data;
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	eat_mutex;
 }					t_philo;
 
@@ -79,7 +79,7 @@ typedef struct 		s_data
 	int				n_musteat;
 
 	pthread_t		tid;
-	uint64_t		start;
+	uint64_t		start_time;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	*dead_mutex;
 	int				i;
@@ -99,6 +99,7 @@ int			pthread_mutex_init(pthread_mutex_t *mutex,
 void		ft_putchar_fd(char c, int fd);
 long int	ft_atoi(const char *str);
 void		ft_putstr_fd(char const *s, int fd);
+void		ft_putnbr_fd(uint64_t n, int fd);
 char		**ft_split(char const *s, char c);
 char		*ft_strcat(char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -132,4 +133,7 @@ void		ft_create_mutex(t_data *philo);
 void		*ft_infinite_loop(t_data *data);
 void		*ft_musteat(t_data *data);
 int			ft_start_philo(t_data *data);
+
+void 		ft_print_msg(t_data *data, int msg);
+
 #endif
