@@ -34,9 +34,9 @@ MINILIBFT_FILES =	ft_putstr_fd.c \
 					ft_putnbr_fd.c \
 
 PHILO_FILES	=	main.c \
+				init.c \
 				parser.c \
 				checkstring.c \
-				mutex.c \
 				threads.c \
 				print_msgs.c \
 

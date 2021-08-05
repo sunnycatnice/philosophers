@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:05:55 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/30 20:18:28 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/08/05 20:34:10 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,26 @@ void	*ft_musteat(t_data *data)
 	return ((void *)0);
 }
 
+void	ft_take_forks(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->fork_mutex[philo->lfork]);
+	ft_print_msg(philo, FORK_MSG);
+	pthread_mutex_lock(&philo->data->fork_mutex[philo->rfork]);
+	ft_print_msg(philo, FORK_MSG);
+}
+
 void	*ft_infinite_loop(t_data *data)
 {
-	data->i++;
-	static int i2= 1;
-	printf("SORTER %d\n", i2++);
+	t_philo		*philo;
+	while(1)
+	{
+		//prende le forchette
+		ft_take_forks(philo);
+		//mangia
+		//lascia le forchette
+		//dormire
+		//pensa
+	}
 	return ((void *)0);
 }
 
