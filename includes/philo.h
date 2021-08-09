@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:52:17 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/30 20:16:22 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/08/05 20:29:00 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define EAT_MSG		1
 # define SLEEP_MSG		2
 # define THINKING_MSG	3
-# define DIED_MSG 		4
+# define DEAD_MSG 		4
 # define MUSTEAT_MSG	5
 
 /*
@@ -77,13 +77,14 @@ typedef struct 		s_data
 	uint64_t		toeat;
 	uint64_t		tosleep;
 	int				n_musteat;
-
-	pthread_t		tid;
+	
 	uint64_t		start_time;
-	pthread_mutex_t	*fork;
-	pthread_mutex_t	*dead_mutex;
-	int				i;
+
 	t_philo			*philos;
+	pthread_mutex_t	*fork_mutex;
+	pthread_mutex_t	*dead_mutex;
+	pthread_t		tid;
+	int				i;
 }					t_data;
 
 /*
@@ -118,11 +119,11 @@ void		sleep_ms(int ms);
 /*
 ** Philo functions
 */
-
+void		ft_init_args(t_data *philo);
+void		ft_init_philos(t_data *data);
 int			check_bychar(char *c);
 int			check_string(int ac, char **av);
 void		ft_printerr(int err);
-void		ft_init(t_data *philo);
 void		ft_print_start_msg(void);
 void		ft_checker(t_data *philo);
 int			ft_parser_checker(int ac, char **av, t_data *philo);

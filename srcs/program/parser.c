@@ -52,27 +52,15 @@ void	ft_printerr(int err)
 	exit (1);
 }
 
-void	ft_init(t_data *philo)
-{
-	ft_print_start_msg();
-	philo->n_philo = 0;
-	philo->todie = 0;
-	philo->toeat = 0;
-	philo->tosleep = 0;
-	philo->n_musteat = -1;
-	philo->i = 0;
-	philo->tid = 0;
-}
-
 void	ft_checker(t_data *philo)
 {
-	if (philo->n_philo <= 1)
+	if (philo->n_philo <= 2)
 		ft_printerr(7);
-	if (philo->todie <= 0)
+	if (philo->todie <= 10)
 		ft_printerr(4);
-	if (philo->toeat <= 0)
+	if (philo->toeat <= 10)
 		ft_printerr(5);
-	if (philo->tosleep <= 0)
+	if (philo->tosleep <= 10)
 		ft_printerr(6);
 	if (philo->n_philo > 200)
 		ft_printerr(3);

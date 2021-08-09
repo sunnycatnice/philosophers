@@ -17,11 +17,11 @@ int	main(int ac, char **av)
 	t_data	philo;
 	t_data	data;
 
-	ft_init(&philo);
+	ft_init_args(&philo);
+	ft_init_philos(&philo);
 	if (ac == 5 || ac == 6)
 	{
 		ft_parser_checker(ac, av, &philo);
-		ft_create_mutex(&philo);
 		ft_start_philo(&data);
 	}
 	else
