@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_msgs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:08:53 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/02 14:09:01 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/08/09 16:19:27 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-static char *get_msg(int msg)
+static char	*get_msg(int msg)
 {
 	if (msg == EAT_MSG)
 		return (" is eating 🍝\n");
@@ -27,12 +27,12 @@ static char *get_msg(int msg)
 	return (" died\n");
 }
 
-void ft_print_msg(t_data *data, int msg)
+void	ft_print_msg(t_data *data, int msg)
 {
 	static int	ok;
 
 	pthread_mutex_lock(&data->philos->print_mutex);
-	if(!ok)
+	if (!ok)
 	{
 		ft_putnbr_fd(get_time() - data->start_time, 1);
 		write(1, "\t", 1);
@@ -40,7 +40,7 @@ void ft_print_msg(t_data *data, int msg)
 			ft_putnbr_fd(data->philos->position + 1, 1 );
 		if (msg >= DIED_MSG)
 			ok = 1;
-		//parser messaggi
+		write(1, get_msg(msg), ft_strlen(get_msg(msg)));
 	}
 	pthread_mutex_unlock(&data->philos->print_mutex);
 }
