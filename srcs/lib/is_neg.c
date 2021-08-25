@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   is_neg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 13:20:46 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/04 13:20:51 by dmangola         ###   ########.fr       */
+/*   Created: 2021/08/12 17:35:21 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 17:52:01 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-void	ft_putnbr_fd(uint64_t n, int fd)
+int	is_neg(char c)
 {
-	char	str[13];
-	int		length;
-
-	if (n == 0)
-		str[0] = '0';
-	length = 0;
-	while (n != 0)
-	{
-		str[length++] = '0' + (n % 10);
-		n = (n / 10);
-	}
-	if (length > 0)
-		length--;
-	while (length >= 0)
-		write(fd, &str[length--], 1);
+	if (c == '-')
+		return (-1);
+	return (1);
 }

@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_time.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 16:50:02 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/07/30 19:44:24 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/07/15 18:27:25 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:34 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-void	sleep_ms(int ms)
-{		
-	usleep(ms*1000);
-}
-
-uint64_t	get_time(void)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	static struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }

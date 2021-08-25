@@ -3,43 +3,86 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/05 18:56:15 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/05 18:56:17 by dmangola         ###   ########.fr       */
+/*   Created: 2021/08/12 17:52:15 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 19:32:27 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h" 
+#include "../../includes/philo.h"
 
-void	ft_init_args(t_data *philo)
+int	check_string(int ac, char const **av)
 {
-	ft_print_start_msg();
-	philo->n_philo = 0;
-	philo->todie = 0;
-	philo->toeat = 0;
-	philo->tosleep = 0;
-	philo->n_musteat = -1;
-	philo->i = 0;
-	philo->tid = 0;
-}
+	int	i;
 
-void	ft_init_philos(t_data *data)
-{
-	short	i;
-
-	i = 0;
-	while (i < data->n_philo)
+	i = 1;
+	while (i < ac)
 	{
-		data->philos[i].is_eating = 0;
-		data->philos[i].position = i;
-		data->philos[i].lfork = i;
-		data->philos[i].rfork = (i + 1) % data->n_philo;
-		data->philos[i].eat_count = 0;
-		data->philos[i].data = data;
-		pthread_mutex_init(&data->philos[i].print_mutex, NULL);
-		pthread_mutex_init(&data->philos[i].eat_mutex, NULL);
-		pthread_mutex_lock(&data->philos[i].eat_mutex);
+		if (check_bychar(av[i]) == 1)
+		{
+			ft_printerr(1);
+			exit (1);
+		}
 		i++;
 	}
+	return (0);
+}
+
+static int	init_mutexes(t_data *state)
+{
+	int	i;
+
+	pthread_mutex_init(&state->can_print, NULL);
+	pthread_mutex_init(&state->somebody_dead_m, NULL);
+	pthread_mutex_lock(&state->somebody_dead_m);
+	state->forks_m = (pthread_mutex_t *)malloc(sizeof(*(state->forks_m)) * \
+		state->n_philo);
+	if (!(state->forks_m))
+		return (1);
+	i = 0;
+	while (i < state->n_philo)
+		pthread_mutex_init(&state->forks_m[i++], NULL);
+	return (0);
+}
+
+static void	init_philos(t_data *state)
+{
+	int	i;
+
+	i = 0;
+	while (i < state->n_philo)
+	{
+		state->philos[i].is_eating = 0;
+		state->philos[i].pos = i;
+		state->philos[i].lfork = i;
+		state->philos[i].rfork = (i + 1) % state->n_philo;
+		state->philos[i].eat_count = 0;
+		state->philos[i].state = state;
+		pthread_mutex_init(&state->philos[i].mtx, NULL);
+		pthread_mutex_init(&state->philos[i].eat_m, NULL);
+		pthread_mutex_lock(&state->philos[i].eat_m);
+		i++;
+	}
+}
+
+int	philo_start(t_data *state, int argc, char const **argv)
+{
+	check_string(argc, argv);
+	state->n_philo = ft_atoi(argv[1]);
+	state->todie = ft_atoi(argv[2]);
+	state->toeat = ft_atoi(argv[3]);
+	state->tosleep = ft_atoi(argv[4]);
+	if (argc == 6)
+		state->n_musteat = ft_atoi(argv[5]);
+	else
+		state->n_musteat = 0;
+	state->forks_m = NULL;
+	state->philos = NULL;
+	state->philos = (t_philo *)malloc(sizeof(*(state->philos)) * \
+		state->n_philo);
+	if (!(state->philos))
+		return (1);
+	init_philos(state);
+	return (init_mutexes(state));
 }

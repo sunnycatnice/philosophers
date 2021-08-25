@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   check_by_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 16:37:59 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/29 13:31:18 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/12 17:41:01 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 17:57:50 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	ft_isdigit(char c)
+int	check_bychar(char const *c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
+	int	i;
+
+	i = 0;
+	while (c[i])
+	{
+		if (c[i] >= '0' && c[i] <= '9')
+			i++;
+		else
+			return (1);
+	}
 	return (0);
 }

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:28:42 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 18:28:43 by dmangola         ###   ########.fr       */
+/*   Created: 2019/12/10 12:40:45 by ncolomer          #+#    #+#             */
+/*   Updated: 2021/08/12 18:00:36 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int
+	ft_strlen(char const *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!dstsize)
-		return (ft_strlen(src));
-	if (!dst || !src)
-		return (0);
-	while (i < dstsize - 1 && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	while (src[i] != '\0')
+	while (str[i])
 		i++;
 	return (i);
+}
+
+uint64_t
+	get_time(void)
+{
+	static struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
 }

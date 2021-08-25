@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 19:31:54 by bde-luca          #+#    #+#             */
-/*   Updated: 2021/07/05 19:32:08 by bde-luca         ###   ########.fr       */
+/*   Created: 2021/07/15 18:27:05 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:33 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-void	*ft_memalloc(size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*ptr;
-
-	ptr = NULL;
-	if (size <= 0)
-		return (NULL);
-	ptr = (char *)malloc(size);
-	if (ptr)
-	{
-		ft_bzero(ptr, size);
-	}
-	return ((void *)ptr);
+	write(fd, &c, 1);
 }

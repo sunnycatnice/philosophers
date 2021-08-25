@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 17:16:35 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 17:16:37 by dmangola         ###   ########.fr       */
+/*   Created: 2021/08/04 13:20:46 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:35 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putnbr_fd(uint64_t n, int fd)
 {
-	unsigned char	*i;
+	char	str[13];
+	int		length;
 
-	i = (unsigned char *)s;
-	while (n > 0)
+	if (n == 0)
+		str[0] = '0';
+	length = 0;
+	while (n != 0)
 	{
-		*i = '\0';
-		i++;
-		n--;
+		str[length++] = '0' + (n % 10);
+		n = (n / 10);
 	}
+	if (length > 0)
+		length--;
+	while (length >= 0)
+		write(fd, &str[length--], 1);
 }

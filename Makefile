@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/08/12 18:14:17 by rpaderi           #+#    #+#              #
+#    Updated: 2021/08/12 19:25:04 by rpaderi          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = philo
 
 HPATH = -Iincludes
@@ -7,7 +19,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 
 DIR_SRCS = srcs
-DIR_MINILIBFT= minilib
+DIR_MINILIBFT= lib
 DIR_PHILO = program
 DIR_OBJS = objs
 CURRENT_FOLDER = $(shell pwd)
@@ -16,29 +28,24 @@ OBJS_PATH = $(addprefix $(CURRENT_FOLDER)/, $(DIR_OBJS))
 MINILIBFT_PATH = $(addprefix $(DIR_SRCS)/, $(DIR_MINILIBFT))
 PHILO_PATH = $(addprefix $(DIR_SRCS)/, $(DIR_PHILO))
 
-MINILIBFT_FILES =	ft_putstr_fd.c \
-					ft_memalloc.c \
-					ft_strjoin.c \
-					ft_strcat.c \
-				 	ft_strncmp.c \
-					ft_strlen.c \
-					ft_putchar_fd.c \
-					ft_bzero.c \
-					ft_strcpy.c \
-					ft_strlcpy.c \
-					ft_split.c \
-					ft_strdup.c \
-					ft_isdigit.c \
+MINILIBFT_FILES =	check_by_char.c \
 					ft_atoi.c \
-					get_time.c \
+					ft_putchar_fd.c \
 					ft_putnbr_fd.c \
+					ft_putstr_fd.c \
+					is_digit.c \
+					is_neg.c \
+					is_space.c \
 
-PHILO_FILES	=	main.c \
+PHILO_FILES	=	eating.c \
+				exit.c \
+				forks.c \
+				ft_printerr.c \
 				init.c \
+				main.c \
+				messages.c \
 				parser.c \
-				checkstring.c \
-				threads.c \
-				print_msgs.c \
+				utils.c \
 
 SRCS_MINILIBFT = $(addprefix $(MINILIBFT_PATH)/, $(MINILIBFT_FILES))
 SRCS_PHILO = $(addprefix $(PHILO_PATH)/, $(PHILO_FILES))

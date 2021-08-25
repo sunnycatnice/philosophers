@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/27 16:36:29 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/29 15:23:20 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/12 17:46:51 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:23 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
-
-int	is_neg(char c)
-{
-	if (c == '-')
-		return (-1);
-	return (1);
-}
-
-int	is_space(char c)
-{
-	if (c == '\t' || c == '\n' || c == '\r' || \
-		c == '\v' || c == '\f' || c == ' ')
-		return (1);
-	return (0);
-}
 
 long int	ft_atoi(const char *str)
 {
