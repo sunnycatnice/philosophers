@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:27:05 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/12 18:50:33 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/04 13:20:46 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:35 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putnbr_fd(uint64_t n, int fd)
 {
-	write(fd, &c, 1);
+	char	str[13];
+	int		length;
+
+	if (n == 0)
+		str[0] = '0';
+	length = 0;
+	while (n != 0)
+	{
+		str[length++] = '0' + (n % 10);
+		n = (n / 10);
+	}
+	if (length > 0)
+		length--;
+	while (length >= 0)
+		write(fd, &str[length--], 1);
 }

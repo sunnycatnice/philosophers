@@ -6,11 +6,11 @@
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 17:08:23 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/08/12 19:32:26 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/08/14 16:41:18 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
 int	clear_state(t_data *state)
 {
@@ -34,7 +34,7 @@ int	clear_state(t_data *state)
 		free(state->philos);
 	}
 	pthread_mutex_destroy(&state->can_print);
-	pthread_mutex_destroy(&state->somebody_dead_m);
+	pthread_mutex_destroy(&state->someone_died);
 	return (1);
 }
 

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_digit.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:36:03 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/08/12 17:51:58 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/07/15 18:27:25 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:34 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
-int	ft_isdigit(char c)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }

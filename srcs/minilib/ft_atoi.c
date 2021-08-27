@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_by_char.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:41:01 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/08/12 17:57:50 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/12 17:46:51 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:23 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
-int	check_bychar(char const *c)
+long int	ft_atoi(const char *str)
 {
-	int	i;
+	int			i;
+	int			neg;
+	long long	result;
 
+	result = 0;
 	i = 0;
-	while (c[i])
+	while (is_space(str[i]))
+		i++;
+	neg = is_neg(str[i]);
+	if (neg == -1)
+		i++;
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		if (c[i] >= '0' && c[i] <= '9')
-			i++;
-		else
-			return (1);
+		if (!ft_isdigit(str[i]))
+			return (-1);
+		result = result * 10 + (str[i] - '0');
+		i++;
+		if (result > 2147483648)
+			break ;
 	}
-	return (0);
+	return (neg * (long int)result);
 }

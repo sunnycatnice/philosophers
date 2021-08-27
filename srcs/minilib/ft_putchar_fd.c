@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_neg.c                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:35:21 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/08/12 17:52:01 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/07/15 18:27:05 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:33 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
-int	is_neg(char c)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (c == '-')
-		return (-1);
-	return (1);
+	write(fd, &c, 1);
 }

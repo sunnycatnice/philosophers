@@ -6,7 +6,7 @@
 #    By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 18:14:17 by rpaderi           #+#    #+#              #
-#    Updated: 2021/08/12 19:25:04 by rpaderi          ###   ########.fr        #
+#    Updated: 2021/08/14 17:09:18 by rpaderi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,12 @@ HPATH = -Iincludes
 
 CC = gcc
 
+#SISTEMO NOMI FILE E CARTELLE
+
 FLAGS = -Wall -Wextra -Werror -g
 
 DIR_SRCS = srcs
-DIR_MINILIBFT= lib
+DIR_MINILIBFT= minilib
 DIR_PHILO = program
 DIR_OBJS = objs
 CURRENT_FOLDER = $(shell pwd)

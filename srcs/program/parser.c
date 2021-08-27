@@ -6,11 +6,11 @@
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:43:04 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/12 18:56:21 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/08/14 17:15:14 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
 void	ft_print_start_msg(void)
 {
@@ -30,11 +30,11 @@ void	ft_checker(t_data *state)
 {
 	if (state->n_philo <= 0)
 		ft_printerr(7);
-	if (state->todie <= 10)
+	if (state->todie <= 60)
 		ft_printerr(4);
-	if (state->toeat <= 10)
+	if (state->toeat <= 60)
 		ft_printerr(5);
-	if (state->tosleep <= 10)
+	if (state->tosleep <= 60)
 		ft_printerr(6);
 	if (state->n_philo > 200)
 		ft_printerr(3);

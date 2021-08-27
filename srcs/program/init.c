@@ -6,11 +6,11 @@
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 17:52:15 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/08/12 19:32:27 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/08/14 16:41:18 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
 int	check_string(int ac, char const **av)
 {
@@ -34,8 +34,8 @@ static int	init_mutexes(t_data *state)
 	int	i;
 
 	pthread_mutex_init(&state->can_print, NULL);
-	pthread_mutex_init(&state->somebody_dead_m, NULL);
-	pthread_mutex_lock(&state->somebody_dead_m);
+	pthread_mutex_init(&state->someone_died, NULL);
+	pthread_mutex_lock(&state->someone_died);
 	state->forks_m = (pthread_mutex_t *)malloc(sizeof(*(state->forks_m)) * \
 		state->n_philo);
 	if (!(state->forks_m))

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ../../includes/philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 14:27:50 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/27 14:27:53 by dmangola         ###   ########.fr       */
+/*   Created: 2021/07/26 14:52:17 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/14 17:16:23 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -33,15 +33,15 @@
 ** Error Codes
 */
 
-# define ERR_0 "Error: wrong number of arguments. Must be 5 or 6.\n"
-# define ERR_1 "Error: found a char in arguments\n"
-# define ERR_2 "Error: insert a valid number.(s)\n"
-# define ERR_3 "Error: Too much Philosopher bruh!\n"
-# define ERR_4 "Error: Too few ms for die!\n"
-# define ERR_5 "Error: Too few ms for eat!\n" 
-# define ERR_6 "Error: Too few ms for sleeping!\n"
-# define ERR_7 "Error: Too few Philosopher bruh\n"
-# define ERR_8 "Error: Couldn't create mutex\n"
+# define ERR_0 "🔴 Error: Wrong number of arguments. Must be 5 or 6.\n"
+# define ERR_1 "🔴 Error: Found a char in arguments\n"
+# define ERR_2 "🔴 Error: Insert a valid number.(s)\n"
+# define ERR_3 "🔴 Error: Too much Philosopher bruh! Not more than 200!\n"
+# define ERR_4 "🔴 Error: You need to put at least 60ms for die!\n"
+# define ERR_5 "🔴 Error: You need to put at least 60ms for eat!\n" 
+# define ERR_6 "🔴 Error: You need to put at least 60ms for sleeping!\n"
+# define ERR_7 "🔴 Error: Too few Philosopher bruh.\n"
+# define ERR_8 "🔴 Error: Couldn't create mutex\n"
 
 struct	s_data;
 
@@ -72,7 +72,7 @@ typedef struct s_data
 	t_philo			*philos;
 	pthread_mutex_t	*forks_m;
 	pthread_mutex_t	can_print;
-	pthread_mutex_t	somebody_dead_m;
+	pthread_mutex_t	someone_died;
 }				t_data;
 
 /* Lib */

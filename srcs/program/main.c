@@ -6,11 +6,11 @@
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 13:31:31 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/08/12 19:32:28 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/08/14 16:59:30 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
 static void	*notinfinite_loop(void *state_v)
 {
@@ -28,7 +28,7 @@ static void	*notinfinite_loop(void *state_v)
 		total++;
 	}
 	show_msg(&state->philos[0], MUSTEAT_MSG);
-	pthread_mutex_unlock(&state->somebody_dead_m);
+	pthread_mutex_unlock(&state->someone_died);
 	return ((void *)0);
 }
 
@@ -40,15 +40,15 @@ static void	*monitor(void *philo_v)
 	while (1)
 	{
 		pthread_mutex_lock(&philo->mtx);
-		if (!philo->is_eating && get_time() > philo->limit)
+		if (!philo->is_eating && get_time() >= philo->limit)
 		{
 			show_msg(philo, DEAD_MSG);
 			pthread_mutex_unlock(&philo->mtx);
-			pthread_mutex_unlock(&philo->state->somebody_dead_m);
+			pthread_mutex_unlock(&philo->state->someone_died);
 			return ((void *)0);
 		}
 		pthread_mutex_unlock(&philo->mtx);
-		usleep(1000);
+		usleep(500);
 	}
 }
 
@@ -113,8 +113,8 @@ int
 		return (clear_state(&state) && exit_error("error: fatal\n"));
 	if (boot_thr(&state))
 		return (clear_state(&state) && exit_error("error: fatal\n"));
-	pthread_mutex_lock(&state.somebody_dead_m);
-	pthread_mutex_unlock(&state.somebody_dead_m);
+	pthread_mutex_lock(&state.someone_died);
+	pthread_mutex_unlock(&state.someone_died);
 	clear_state(&state);
 	return (0);
 }

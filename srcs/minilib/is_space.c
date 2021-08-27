@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   is_space.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:27:25 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/12 18:50:34 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/12 17:35:32 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:28 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+int	is_space(char c)
 {
-	while (*s)
-		ft_putchar_fd(*s++, fd);
+	if (c == '\t' || c == '\n' || c == '\r' || \
+		c == '\v' || c == '\f' || c == ' ')
+		return (1);
+	return (0);
 }

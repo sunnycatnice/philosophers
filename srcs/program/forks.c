@@ -6,11 +6,11 @@
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 17:51:46 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/08/12 19:32:29 by rpaderi          ###   ########.fr       */
+/*   Updated: 2021/08/14 16:41:19 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
 void
 	take_forks(t_philo *philo)

@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../../includes/philosophers.h"
 
-int	ft_strlen(char const *str)
+int
+	ft_strlen(char const *str)
 {
 	int	i;
 
@@ -22,7 +23,8 @@ int	ft_strlen(char const *str)
 	return (i);
 }
 
-uint64_t	get_time(void)
+uint64_t
+	get_time(void)
 {
 	static struct timeval	tv;
 
