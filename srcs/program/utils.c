@@ -36,3 +36,12 @@ void	ft_finish(void)
 {
 	exit (0);
 }
+
+void	ft_usleep(int time)
+{
+	unsigned long	end;
+
+	end = get_time() + time;
+	while (get_time() < end)
+		usleep(time);
+}

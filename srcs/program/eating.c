@@ -20,7 +20,7 @@ void
 	philo->last_eat = get_time();
 	philo->limit = philo->last_eat + philo->state->todie;
 	show_msg(philo, EAT_MSG);
-	usleep(philo->state->toeat * 1000);
+	ft_usleep(philo->state->toeat);
 	philo->eat_count++;
 	philo->is_eating = 0;
 	pthread_mutex_unlock(&philo->mtx);

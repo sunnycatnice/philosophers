@@ -27,5 +27,5 @@ void
 	show_msg(philo, SLEEP_MSG);
 	pthread_mutex_unlock(&philo->state->forks_m[philo->lfork]);
 	pthread_mutex_unlock(&philo->state->forks_m[philo->rfork]);
-	usleep(philo->state->tosleep * 1000);
+	ft_usleep(philo->state->tosleep);
 }

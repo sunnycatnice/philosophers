@@ -102,5 +102,6 @@ void				clean_forks(t_philo *philo);
 void				eat(t_philo *philo);
 void				show_msg(t_philo *philo, int type);
 void				ft_finish(void);
+void				ft_usleep(int time);
 
 #endif
