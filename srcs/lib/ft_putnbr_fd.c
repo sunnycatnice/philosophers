@@ -29,4 +29,5 @@ void	ft_putnbr_fd(uint64_t n, int fd)
 		length--;
 	while (length >= 0)
 		write(fd, &str[length--], 1);
+	write(1, "\t", 1);
 }

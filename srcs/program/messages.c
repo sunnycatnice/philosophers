@@ -38,17 +38,14 @@ void	show_msg(t_philo *philo, int type)
 		{
 			printf("Everyone eat %d times. Stopping! ✅", \
 				philo->state->n_musteat);
-			exit (0);
+			ft_finish();
 		}
 		else
 		{
 			ft_putnbr_fd(get_time() - philo->state->start, 1);
 			ft_putstr_fd("\tphilo\t", 1);
 			if (type != MUSTEAT_MSG)
-			{
 				ft_putnbr_fd(philo->pos + 1, 1);
-				write(1, "\t", 1);
-			}
 			if (type >= DEAD_MSG)
 				done = 1;
 			else

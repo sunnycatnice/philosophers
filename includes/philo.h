@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../../includes/philo.h                                     :+:      :+:    :+:   */
+/*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/26 14:52:17 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/12 19:32:28 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/27 14:27:50 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/27 14:27:53 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILO_H
+# define PHILO_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -101,5 +101,6 @@ void				take_forks(t_philo *philo);
 void				clean_forks(t_philo *philo);
 void				eat(t_philo *philo);
 void				show_msg(t_philo *philo, int type);
+void				ft_finish(void);
 
 #endif
