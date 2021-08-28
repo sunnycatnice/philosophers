@@ -101,7 +101,8 @@ void				take_forks(t_philo *philo);
 void				clean_forks(t_philo *philo);
 void				eat(t_philo *philo);
 void				show_msg(t_philo *philo, int type);
-void				ft_finish(void);
 void				ft_usleep(int time);
+void				ft_putstr_star_fd(char *s, int fd);
+void				ft_printstars(char *str);
 
 #endif

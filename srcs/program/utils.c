@@ -32,11 +32,6 @@ uint64_t
 	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
 }
 
-void	ft_finish(void)
-{
-	exit (0);
-}
-
 void	ft_usleep(int time)
 {
 	unsigned long	end;

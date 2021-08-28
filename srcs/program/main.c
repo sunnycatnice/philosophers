@@ -77,7 +77,6 @@ static int	boot_thr(t_data *state)
 {
 	int			i;
 	pthread_t	tid;
-	//void		*philo;
 
 	state->start = get_time();
 	if (state->n_musteat > 0)
@@ -87,11 +86,10 @@ static int	boot_thr(t_data *state)
 		pthread_detach(tid);
 	}
 	i = 0;
-
 	while (i < state->n_philo)
 	{
-		//philo = );
-		if (pthread_create(&tid, NULL, &infinite_loop, (void *)(&state->philos[i])) != 0)
+		if (pthread_create(&tid, NULL, &infinite_loop, \
+			(void *)(&state->philos[i])) != 0)
 			return (1);
 		pthread_detach(tid);
 		usleep(100);

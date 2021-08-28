@@ -17,3 +17,14 @@ void	ft_putstr_fd(char const *s, int fd)
 	while (*s)
 		ft_putchar_fd(*s++, fd);
 }
+
+void	ft_putstr_star_fd(char *s, int fd)
+{
+	char *s_copy;
+
+	s_copy = s;
+	ft_printstars(s);
+	while (*s)
+		ft_putchar_fd(*s++, fd);
+	ft_printstars(s_copy);
+}

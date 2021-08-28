@@ -33,7 +33,13 @@ static void	ft_print_time(t_philo *philo)
 	ft_putnbr_fd(get_time() - philo->state->start, 1);
 	ft_putstr_fd("\033[0m", 1);
 }
-
+/*
+**		ATTENZIONA!!!!!!!
+**
+**
+**		SI PUO' NON USARE EXIT APPARENTEMENTE
+**
+*/
 void	show_msg(t_philo *philo, int type)
 {
 	static int	done = 0;
@@ -53,7 +59,7 @@ void	show_msg(t_philo *philo, int type)
 		{
 			printf("Everyone eat %d times. Stopping! ✅\n", \
 				philo->state->n_musteat);
-			ft_finish();
+			//ft_finish();
 		}
 		else
 			write(1, get_message(type), ft_strlen(get_message(type)));
