@@ -20,7 +20,7 @@ void	ft_putstr_fd(char const *s, int fd)
 
 void	ft_putstr_star_fd(char *s, int fd)
 {
-	char *s_copy;
+	char	*s_copy;
 
 	s_copy = s;
 	ft_printstars(s);

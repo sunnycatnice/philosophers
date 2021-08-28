@@ -37,13 +37,13 @@ void	ft_printerr(int err)
 
 void	ft_printstars(char *str)
 {
-	short i;
-	short len;
+	short	i;
+	short	len;
 
 	i = -1;
 	len = ft_strlen(str) - 3;
-	ft_putstr_fd("\033[0;31m",2);
-	while(++i < len)
+	ft_putstr_fd("\033[0;31m", 2);
+	while (++i < len)
 		ft_putchar_fd('*', 2);
 	ft_putstr_fd("\033[0m\n", 2);
 }
