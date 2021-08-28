@@ -50,12 +50,15 @@ void	show_msg(t_philo *philo, int type)
 			ft_putstr_fd("\033[0m", 1);
 		}
 		if (type == MUSTEAT_MSG)
-			printf("Everyone eat %d times. Stopping! ✅\n", \
+			printf("Everyone ate at least %d times. Stopping! ✅\n", \
 				philo->state->n_musteat);
 		else
 			write(1, get_message(type), ft_strlen(get_message(type)));
 		if (type >= DEAD_MSG)
+		{
 			done = 1;
+			ft_finish();
+		}
 	}
 	pthread_mutex_unlock(&philo->state->can_print);
 }

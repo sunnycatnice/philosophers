@@ -23,6 +23,12 @@ int
 	return (i);
 }
 
+void
+	ft_finish(void)
+{
+	exit(0);
+}
+
 uint64_t
 	get_time(void)
 {

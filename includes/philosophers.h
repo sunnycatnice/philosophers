@@ -104,5 +104,6 @@ void				show_msg(t_philo *philo, int type);
 void				ft_usleep(int time);
 void				ft_putstr_star_fd(char *s, int fd);
 void				ft_printstars(char *str);
+void				ft_finish(void);
 
 #endif
